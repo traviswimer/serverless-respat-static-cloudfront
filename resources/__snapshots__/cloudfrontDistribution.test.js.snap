@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cloudfrontDistribution() generates HTTP distribution 1`] = `
+Object {
+  "Properties": Object {
+    "DistributionConfig": Object {
+      "Aliases": Array [
+        "TheDomain",
+      ],
+      "CacheBehaviors": Array [
+        Object {
+          "AllowedMethods": Array [
+            "DELETE",
+            "GET",
+            "HEAD",
+            "OPTIONS",
+            "PATCH",
+            "POST",
+            "PUT",
+          ],
+          "DefaultTTL": 0,
+          "ForwardedValues": Object {
+            "Cookies": Object {
+              "Forward": "all",
+            },
+            "Headers": Array [
+              "Referer",
+              "Accept",
+              "Content-Type",
+              "Authorization",
+            ],
+            "QueryString": true,
+          },
+          "MaxTTL": 0,
+          "PathPattern": "the-path-pattern/*",
+          "TargetOriginId": "ThePatternNameTheOriginId",
+          "ViewerProtocolPolicy": "allow-all",
+        },
+      ],
+      "Comment": "Cloudfront Distribution pointing to TheDomain S3 bucket",
+      "DefaultCacheBehavior": Object {
+        "AllowedMethods": Array [
+          "GET",
+          "HEAD",
+        ],
+        "Compress": true,
+        "DefaultTTL": 0,
+        "ForwardedValues": Object {
+          "Cookies": Object {
+            "Forward": "none",
+          },
+          "QueryString": true,
+        },
+        "MaxTTL": 0,
+        "TargetOriginId": "ThePatternNameS3Origin",
+        "ViewerProtocolPolicy": "allow-all",
+      },
+      "DefaultRootObject": "TheRootObject",
+      "Enabled": true,
+      "HttpVersion": "http2",
+      "IPV6Enabled": true,
+      "Origins": Array [
+        Object {
+          "CustomOriginConfig": Object {
+            "HTTPPort": "80",
+            "HTTPSPort": "443",
+            "OriginProtocolPolicy": "http-only",
+          },
+          "DomainName": "TheDomain.s3-website-TheRegion.amazonaws.com",
+          "Id": "ThePatternNameS3Origin",
+        },
+        Object {
+          "CustomOriginConfig": Object {
+            "HTTPPort": "80",
+            "HTTPSPort": "443",
+            "OriginProtocolPolicy": "http-only",
+          },
+          "DomainName": "the-origin-domain",
+          "Id": "ThePatternNameTheOriginId",
+          "OriginPath": "/origin-path",
+        },
+      ],
+      "PriceClass": "PriceClass_100",
+      "ViewerCertificate": undefined,
+    },
+  },
+  "Type": "AWS::CloudFront::Distribution",
+}
+`;
+
+exports[`cloudfrontDistribution() generates HTTPS distribution 1`] = `
+Object {
+  "Properties": Object {
+    "DistributionConfig": Object {
+      "Aliases": Array [
+        "TheDomain",
+      ],
+      "CacheBehaviors": Array [
+        Object {
+          "AllowedMethods": Array [
+            "DELETE",
+            "GET",
+            "HEAD",
+            "OPTIONS",
+            "PATCH",
+            "POST",
+            "PUT",
+          ],
+          "DefaultTTL": 0,
+          "ForwardedValues": Object {
+            "Cookies": Object {
+              "Forward": "all",
+            },
+            "Headers": Array [
+              "Referer",
+              "Accept",
+              "Content-Type",
+              "Authorization",
+            ],
+            "QueryString": true,
+          },
+          "MaxTTL": 0,
+          "PathPattern": "the-path-pattern/*",
+          "TargetOriginId": "ThePatternNameTheOriginId",
+          "ViewerProtocolPolicy": "redirect-to-https",
+        },
+      ],
+      "Comment": "Cloudfront Distribution pointing to TheDomain S3 bucket",
+      "DefaultCacheBehavior": Object {
+        "AllowedMethods": Array [
+          "GET",
+          "HEAD",
+        ],
+        "Compress": true,
+        "DefaultTTL": 0,
+        "ForwardedValues": Object {
+          "Cookies": Object {
+            "Forward": "none",
+          },
+          "QueryString": true,
+        },
+        "MaxTTL": 0,
+        "TargetOriginId": "ThePatternNameS3Origin",
+        "ViewerProtocolPolicy": "redirect-to-https",
+      },
+      "DefaultRootObject": "TheRootObject",
+      "Enabled": true,
+      "HttpVersion": "http2",
+      "IPV6Enabled": true,
+      "Origins": Array [
+        Object {
+          "CustomOriginConfig": Object {
+            "HTTPPort": "80",
+            "HTTPSPort": "443",
+            "OriginProtocolPolicy": "http-only",
+          },
+          "DomainName": "TheDomain.s3-website-TheRegion.amazonaws.com",
+          "Id": "ThePatternNameS3Origin",
+        },
+        Object {
+          "CustomOriginConfig": Object {
+            "HTTPPort": "80",
+            "HTTPSPort": "443",
+            "OriginProtocolPolicy": "https-only",
+          },
+          "DomainName": "the-origin-domain",
+          "Id": "ThePatternNameTheOriginId",
+          "OriginPath": "/origin-path",
+        },
+      ],
+      "PriceClass": "PriceClass_100",
+      "ViewerCertificate": Object {
+        "AcmCertificateArn": "TheCertArn",
+        "SslSupportMethod": "sni-only",
+      },
+    },
+  },
+  "Type": "AWS::CloudFront::Distribution",
+}
+`;
