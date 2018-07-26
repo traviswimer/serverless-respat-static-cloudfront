@@ -4,11 +4,14 @@
   "description": "Resource pattern to setup a Cloudfront distribution for a static site hosted on S3.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "cd ./test; sls package; cd ../; jest"
   },
   "author": "Travis Wimer",
   "license": "MIT",
   "devDependencies": {
-    "jest": "23.4.1"
-  }
+    "jest": "23.4.1",
+    "serverless": "1.29.0",
+    "serverless-respat": "2.0.0"
+  },
+  "dependencies": {}
 }

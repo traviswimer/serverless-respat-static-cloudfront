@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serverless packaging generates correct cloudformation template 1`] = `
+Object {
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "The AWS CloudFormation template for this Serverless application",
+  "Outputs": Object {
+    "ServerlessDeploymentBucketName": Object {
+      "Value": Object {
+        "Ref": "ServerlessDeploymentBucket",
+      },
+    },
+  },
+  "Resources": Object {
+    "ServerlessDeploymentBucket": Object {
+      "Type": "AWS::S3::Bucket",
+    },
+    "StaticCloudfrontCloudfrontDistribution": Object {
+      "Properties": Object {
+        "DistributionConfig": Object {
+          "Aliases": Array [
+            "not.a.domain.nope",
+          ],
+          "CacheBehaviors": Array [
+            Object {
+              "AllowedMethods": Array [
+                "DELETE",
+                "GET",
+                "HEAD",
+                "OPTIONS",
+                "PATCH",
+                "POST",
+                "PUT",
+              ],
+              "DefaultTTL": 0,
+              "ForwardedValues": Object {
+                "Cookies": Object {
+                  "Forward": "all",
+                },
+                "Headers": Array [
+                  "Referer",
+                  "Accept",
+                  "Content-Type",
+                  "Authorization",
+                ],
+                "QueryString": true,
+              },
+              "MaxTTL": 0,
+              "PathPattern": "api/*",
+              "TargetOriginId": "StaticCloudfrontApiOrigin",
+              "ViewerProtocolPolicy": "redirect-to-https",
+            },
+          ],
+          "Comment": "Cloudfront Distribution pointing to not.a.domain.nope S3 bucket",
+          "DefaultCacheBehavior": Object {
+            "AllowedMethods": Array [
+              "GET",
+              "HEAD",
+            ],
+            "Compress": true,
+            "DefaultTTL": 0,
+            "ForwardedValues": Object {
+              "Cookies": Object {
+                "Forward": "none",
+              },
+              "QueryString": true,
+            },
+            "MaxTTL": 0,
+            "TargetOriginId": "StaticCloudfrontS3Origin",
+            "ViewerProtocolPolicy": "redirect-to-https",
+          },
+          "DefaultRootObject": "index.html",
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": Array [
+            Object {
+              "CustomOriginConfig": Object {
+                "HTTPPort": "80",
+                "HTTPSPort": "443",
+                "OriginProtocolPolicy": "http-only",
+              },
+              "DomainName": "not.a.domain.nope.s3-website-us-east-1.amazonaws.com",
+              "Id": "StaticCloudfrontS3Origin",
+            },
+            Object {
+              "CustomOriginConfig": Object {
+                "HTTPPort": "80",
+                "HTTPSPort": "443",
+                "OriginProtocolPolicy": "https-only",
+              },
+              "DomainName": "api.gateway.url",
+              "Id": "StaticCloudfrontApiOrigin",
+              "OriginPath": "/stage",
+            },
+          ],
+          "PriceClass": "PriceClass_100",
+          "ViewerCertificate": Object {
+            "AcmCertificateArn": "not:a:real:arn",
+            "SslSupportMethod": "sni-only",
+          },
+        },
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+  },
+}
+`;
