@@ -1,6 +1,6 @@
 {
   "name": "serverless-respat-static-cloudfront",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Resource pattern to setup a Cloudfront distribution for a static site hosted on S3.",
   "main": "index.js",
   "scripts": {
