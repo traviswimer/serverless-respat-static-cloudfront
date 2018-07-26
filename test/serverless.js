@@ -1,19 +1,9 @@
 'use strict';
 module.exports = {
 	"service": "TEST_ONLY",
-	"package": {
-		exclude: ['node_modules/**', '!node_modules/aws-sdk/**', '!node_modules/aws-lambda-ses-forwarder/**']
-	},
 	"provider": {
 		"name": "aws",
 		"runtime": "nodejs8.10"
-	},
-	"functions": {
-	},
-	"resources": {
-		"Resources": {
-
-		}
 	},
 	"plugins": [
 		"serverless-respat"
