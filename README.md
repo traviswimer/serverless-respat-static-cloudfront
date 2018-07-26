@@ -18,7 +18,7 @@ Add patterns to the "custom" object in your serverless config file:
 		prefix: "${self:service}-${opt:stage}",
 		patterns: [
 			{
-				pattern_function: require("serverless-respat-static-cloudfront"),
+				pattern: require("serverless-respat-static-cloudfront"),
 				config: {
 					domain: "YOURDOMAIN",
 					region: '${self:provider.region}',
@@ -57,20 +57,20 @@ Before this will work, you need to create an S3 bucket with the same name as you
 
 ## Config options
 
-* **pattern_name** - (string) A pattern name included in resource names. _DEFAULT: "StaticCloudfront"
+* **pattern_name** (string, _default: "StaticCloudfront"_) - A pattern name included in resource names.
 
-* **domain** - (string) - Your website domain name
+* **use_https** (boolean, _default: true_) - If true, you site will use HTTPS
 
-* **region** - (string) - AWS region
+* **domain** (string, REQUIRED) - Your website domain name
 
-* **use_https** - (boolean) If true, you site will use HTTPS
+* **region** (string, REQUIRED) - AWS region
 
-* **default_root_object** - (string) The root file used from your S3 bucket
+* **default_root_object** (string, REQUIRED) - The root file used from your S3 bucket
 
-* **certificate_arn** - (string) The ARN for the ACM certificate to use for HTTPS
+* **certificate_arn** (string, REQUIRED) - The ARN for the ACM certificate to use for HTTPS
 
 * **origins** - (array) List of objects defining the origins to include
-  * **id** - (string) ID to use for the origin
-  * **path** - (string) The origin path
-  * **path_pattern** - (string) Pattern to use for the origin
-  * **domain** - (string) The domain the origin should point to. (An API Gateway, etc.)
+  * **id** - (string, REQUIRED) ID to use for the origin
+  * **path** - (string, REQUIRED) The origin path
+  * **path_pattern** - (string, REQUIRED) Pattern to use for the origin
+  * **domain** - (string, REQUIRED) The domain the origin should point to. (An API Gateway, etc.)
